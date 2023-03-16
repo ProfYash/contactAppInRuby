@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'contacts App',contacts_path,class:'navbar-brand' %>
+  <%# <a class="navbar-brand" href="#">contacts App</a> %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <%if user_signed_in?%>
+        <li class="nav-item">
+          <%= link_to 'My contacts', contacts_path,class:'nav-link'%>
+          <%# <a class="nav-link" href="#">My contacts</a> %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add contact', new_contact_path,class:'nav-link'%>
+          <%# <a class="nav-link" href="#">Add contact</a> %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Edit Profile', edit_user_registration_path,class:'nav-link'%>
+          <%# <a class="nav-link" href="#">My contacts</a> %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign out", url_for(controller: 'devise/sessions', action: 'destroy', authenticity_token: form_authenticity_token), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?"},class:'nav-link' %>
+        </li>
+      <%else%>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path,class:'nav-link'%>
+          <%# <a class="nav-link" href="#">My contacts</a> %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Up',  new_user_registration_path,class:'nav-link'%>
+          <%# <a class="nav-link" href="#">My contacts</a> %>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</nav>

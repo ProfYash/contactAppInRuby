@@ -1,0 +1,18 @@
+<%= render @contact %>
+<div>
+  <%= link_to "Edit this contact", edit_contact_path(@contact) %> |
+  <%= link_to "Back to contacts", contacts_path %>
+  <%= button_to "Destroy this contact", @contact, method: :delete %>
+</div>
+<% render @contact %>
+<div class="jumbotron">
+  <h1 class="display-4"><%= @contact.full_name.upcase%></h1>
+  <hr class="my-4">
+  <p class="lead">
+    <b>ID:</b> <%= @contact.id%><br/>
+  </p>
+  <%= link_to "Add contact_info",   new_contact_contact_info_path(@contact), class: 'btn btn-primary btn-sm' %>
+  <%= link_to "Edit this contact", edit_contact_path(@contact),class:'btn btn-primary' %> |
+  <%= link_to "Back to contacts", contacts_path,class:'btn btn-warning' %>
+  <%= link_to 'Delete', @contact,  data: { turbo_method: :delete,confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</div>

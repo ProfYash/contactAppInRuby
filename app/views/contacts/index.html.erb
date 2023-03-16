@@ -1,0 +1,40 @@
+<%= link_to "New contact", new_contact_path %>
+<%if user_signed_in?%>
+  <h1>contacts</h1>
+  <div id="contacts">
+    <table class="table table-hover table-striped">
+      <thead class="thead">
+        <tr class="table-primary">
+          <th scope="col">ID</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Add contact_info</th>
+          <th scope="col">Show contact_info</th>
+          <th scope="col">Show contact</th>
+          <th scope="col">Edit contact</th>
+          <th scope="col">Delete contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+    @contacts.each do |contact|
+    end
+    %>
+        <% @contacts.each do |contact| %>
+          <tr>
+            <td scope="row"><%=contact.id%></td>
+            <td><%= contact.full_name%></td>
+            <td>
+              <%= link_to "Add contact_info",   new_contact_contact_info_path(contact), class: 'btn btn-primary btn-sm' %>
+            </td>
+            <td>
+              <%= link_to "Show contact_info",contact_contact_infos_path(contact), class: 'btn btn-primary btn-sm' %>
+            </td>
+            <td><%= link_to "Show", contact_path(contact), class: 'btn btn-primary btn-sm' %></td>
+            <td><%= link_to "Edit", edit_contact_path(contact),class:'btn btn-warning btn-sm'%></td>
+            <td><%= link_to 'Delete', contact_path(contact),  data: { turbo_method: :delete,confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<%end%>

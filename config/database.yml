@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: contactAppRuby_development
+  username: postgres
+  password: root
+test:
+  <<: *default
+  database: contactAppRuby_test
+  username: postgres
+  password: root
+
+
+production:
+  <<: *default
+  database: contactAppRuby_production
+  username: postgres
+  password: root
